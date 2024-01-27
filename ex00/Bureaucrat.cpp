@@ -10,17 +10,17 @@ void Bureaucrat::_setGrade(unsigned int grade)
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string const& name, unsigned int grade) : _name(name)
 {
 	try
 	{
 		_setGrade(grade);
 	}
-	catch(const Bureaucrat::GradeTooHighException& e)
+	catch(Bureaucrat::GradeTooHighException const& e)
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
-	catch(const Bureaucrat::GradeTooLowException& e)
+	catch(Bureaucrat::GradeTooLowException const& e)
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
@@ -38,7 +38,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& x)
 	*this = x;
 }
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& x)
+Bureaucrat& Bureaucrat::operator=(Bureaucrat const& x)
 {
 	std::cout << GREEN << "Bureaucrat : Copy assignment operator called" << RESET << std::endl;
 	if (this != &x)
@@ -46,12 +46,12 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& x)
 	return (*this);		
 }
 
-const std::string& Bureaucrat::getName(void) const
+std::string const& Bureaucrat::getName(void) const
 {
 	return (_name);
 }
 
-const unsigned int& Bureaucrat::getGrade(void) const
+unsigned int const& Bureaucrat::getGrade(void) const
 {
 	return (_grade);
 }
@@ -62,7 +62,7 @@ unsigned int Bureaucrat::incrementGrade(void)
 	{
 		_setGrade(_grade - 1);
 	}
-	catch(const Bureaucrat::GradeTooHighException& e)
+	catch(Bureaucrat::GradeTooHighException const& e)
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
@@ -75,7 +75,7 @@ unsigned int Bureaucrat::decrementGrade(void)
 	{
 		_setGrade(_grade + 1);
 	}
-	catch(const Bureaucrat::GradeTooLowException& e)
+	catch(Bureaucrat::GradeTooLowException const& e)
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
@@ -92,7 +92,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade is too low!");
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
+std::ostream& operator<<(std::ostream& os, Bureaucrat const& b)
 {
 	return os << GREEN << b.getName() << ", bureaucrat grade " << b.getGrade() << RESET;
 }

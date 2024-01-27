@@ -11,12 +11,14 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat( const std::string&, unsigned int );
+		Bureaucrat( std::string const&, unsigned int );
 		~Bureaucrat();
-		Bureaucrat( const Bureaucrat& );
-		Bureaucrat& operator=( const Bureaucrat& );
-		const std::string& getName( void ) const;
-		const unsigned int& getGrade( void ) const;
+
+		Bureaucrat( Bureaucrat const& );
+		Bureaucrat& operator=( Bureaucrat const& );
+
+		std::string const& getName( void ) const;
+		unsigned int const& getGrade( void ) const;
 		unsigned int incrementGrade( void );
 		unsigned int decrementGrade( void );
 
@@ -30,11 +32,14 @@ class Bureaucrat
 		};
 
 	private:
-		const std::string	_name;
+		std::string	const	_name;
 		unsigned int		_grade;
+
 		void _setGrade( unsigned int );
+
+		Bureaucrat();
 };
 
-std::ostream& operator<<( std::ostream&, const Bureaucrat& );
+std::ostream& operator<<( std::ostream&, Bureaucrat const& );
 
 #endif /* __BUREAUCRAT_HPP__ */
