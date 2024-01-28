@@ -20,6 +20,8 @@ class Bureaucrat
 		unsigned int incrementGrade(void);
 		unsigned int decrementGrade(void);
 
+		void signForm(void) const;
+
 		class GradeTooHighException : public std::exception
 		{
 			public :

@@ -130,3 +130,11 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const& b)
 {
 	return os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 }
+
+void Bureaucrat::signForm(void) const
+{
+	if ()
+		std::cout  << _name << " signed " << "<form>" << std::endl;
+	else
+		std::cout  << _name << " couldn't signed " << "<form>" << "because" << "<reason>" << "." << std::endl;
+}
