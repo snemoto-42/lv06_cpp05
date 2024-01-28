@@ -1,6 +1,4 @@
 #pragma once
-#ifndef __BUREAUCRAT_HPP__
-#define __BUREAUCRAT_HPP__
 
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
@@ -11,16 +9,16 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat( std::string const&, unsigned int );
+		Bureaucrat(std::string const, unsigned int);
 		~Bureaucrat();
 
-		Bureaucrat( Bureaucrat const& );
-		Bureaucrat& operator=( Bureaucrat const& );
+		Bureaucrat(Bureaucrat const&);
+		Bureaucrat & operator=(Bureaucrat const&);
 
-		std::string const& getName( void ) const;
-		unsigned int const& getGrade( void ) const;
-		unsigned int incrementGrade( void );
-		unsigned int decrementGrade( void );
+		std::string const& getName(void) const;
+		unsigned int const& getGrade(void) const;
+		unsigned int incrementGrade(void);
+		unsigned int decrementGrade(void);
 
 		class GradeTooHighException : public std::exception	{
 			public :
@@ -32,14 +30,13 @@ class Bureaucrat
 		};
 
 	private:
-		std::string	const	_name;
+		std::string			_name;
 		unsigned int		_grade;
 
-		void _setGrade( unsigned int );
+		void _setGrade(unsigned int);
+		void _setName(std::string const&);
 
 		Bureaucrat();
 };
 
-std::ostream& operator<<( std::ostream&, Bureaucrat const& );
-
-#endif /* __BUREAUCRAT_HPP__ */
+std::ostream & operator<<(std::ostream &, Bureaucrat const&);

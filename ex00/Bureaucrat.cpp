@@ -1,17 +1,49 @@
 #include "Bureaucrat.hpp"
 
+void Bureaucrat::_setName(std::string const& name)
+{
+	if (name.empty())
+	{
+		_name = "Invalid name";
+		throw std::runtime_error("Invalid name");
+	}
+	size_t pos = name.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+	if (pos == std::string::npos)
+		_name = name;
+	else
+	{
+		_name = "Invalid name";
+		throw std::runtime_error("Invalid name");
+	}
+}
+
 void Bureaucrat::_setGrade(unsigned int grade)
 {
 	if (grade < 1)
+	{
+		_grade = 0;
 		throw GradeTooHighException();
+	}
 	else if (grade > 150)
+	{
+		_grade = 0;
 		throw GradeTooLowException();
+	}
 	else
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(std::string const& name, unsigned int grade) : _name(name)
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade)
 {
+	std::cout << GREEN << "Bureaucrat : Default constructor called" << RESET << std::endl;
+	try
+	{
+		_setName(name);
+	}
+	catch(std::exception & e)
+	{
+		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+	}	
 	try
 	{
 		_setGrade(grade);
@@ -24,7 +56,6 @@ Bureaucrat::Bureaucrat(std::string const& name, unsigned int grade) : _name(name
 	{
 		std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
 	}
-	std::cout << GREEN << "Bureaucrat : Default constructor called" << RESET << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -32,7 +63,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << GREEN << "Bureaucrat : Destructor called" << RESET << std::endl;	
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& x)
+Bureaucrat::Bureaucrat(Bureaucrat const& x)
 {
 	std::cout << GREEN << "Bureaucrat : Copy constructor called" << RESET << std::endl;
 	*this = x;
@@ -42,7 +73,10 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& x)
 {
 	std::cout << GREEN << "Bureaucrat : Copy assignment operator called" << RESET << std::endl;
 	if (this != &x)
-		;
+	{
+		_name = x._name;
+		_grade = x._grade;
+	}
 	return (*this);		
 }
 
@@ -94,5 +128,5 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat const& b)
 {
-	return os << GREEN << b.getName() << ", bureaucrat grade " << b.getGrade() << RESET;
+	return os << b.getName() << ", bureaucrat grade " << b.getGrade();
 }
