@@ -1,7 +1,30 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
+	std::cout << "\n<<< ex01 >>>" << std::endl;
+	{
+		std::cout << "\n--- signed test ---" << std::endl;
+		Bureaucrat b("snemoto", 1);
+		std::cout << b << std::endl;
+		Form f;
+		std::cout << f << std::endl;
+		b.signForm(f);
+	}
+	{
+		std::cout << "\n--- Non-signed test ---" << std::endl;
+		Bureaucrat b("snemoto", 43);
+		std::cout << b << std::endl;
+		Form f;
+		std::cout << f << std::endl;
+		b.signForm(f);
+		
+		std::cout << "\n--- after grade up ---" << std::endl;
+		b.incrementGrade();
+		std::cout << b << std::endl;
+		b.signForm(f);
+	}
 	// std::cout << "\n<<< ex00 >>>" << std::endl;
 	// {
 	// 	std::cout << "\n--- start grade 1 ---" << std::endl;

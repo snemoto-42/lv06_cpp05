@@ -118,12 +118,12 @@ unsigned int Bureaucrat::decrementGrade(void)
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high!");
+	return ("[Bureaucrat]Grade is too high!");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low!");
+	return ("[Bureaucrat]Grade is too low!");
 }
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat const& b)
@@ -131,10 +131,15 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const& b)
 	return os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 }
 
-void Bureaucrat::signForm(void) const
+void Bureaucrat::signForm(Form & f) const
 {
-	if ()
-		std::cout  << _name << " signed " << "<form>" << std::endl;
-	else
-		std::cout  << _name << " couldn't signed " << "<form>" << "because" << "<reason>" << "." << std::endl;
+	try
+	{
+		f.beSigned(*this);
+		std::cout  << _name << " signed " << f.getName() << std::endl;
+	}
+	catch (Form::GradeTooLowException const& e)
+	{
+		std::cout  << _name << " couldn't sign " << f.getName() << " because " << e.what() << "." << std::endl;
+	}
 }

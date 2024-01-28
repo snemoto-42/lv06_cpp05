@@ -8,6 +8,8 @@
 
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	public:
@@ -18,16 +20,11 @@ class Form
 
 		std::string const& getName(void) const;
 		bool const& getBeSigned(void) const;
-		unsigned int const& getGrade(void) const;
+		unsigned int const& getGradeForSign(void) const;
 		unsigned int const& getGradeForExecute(void) const;
 
-		void besigned(Bureaucrat);
+		void beSigned(Bureaucrat const&);
 
-		class GradeTooHighException : public std::exception
-		{
-			public :
-				const char* what() const throw();
-		};
 		class GradeTooLowException : public std::exception
 		{
 			public :
@@ -37,7 +34,7 @@ class Form
 	private:
 		std::string		_name;
 		bool			_signed;
-		unsigned int	_grade;
+		unsigned int	_gradeForSign;
 		unsigned int	_gradeForExecute;
 
 };

@@ -1,8 +1,8 @@
 #include "Form.hpp"
 
-Form::Form():_signed(false) ,_gradeForExecute(10)
+Form::Form():_name("42form") ,_signed(false) ,_gradeForSign(42) ,_gradeForExecute(21)
 {
-	std::cout << GREEN << "Bureaucrat : Default constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Form : Default constructor called" << RESET << std::endl;
 }
 
 Form::~Form()
@@ -23,7 +23,7 @@ Form& Form::operator=(Form const& x)
 	{
 		_name = x._name;
 		_signed = x._signed;
-		_grade = x._grade;
+		_gradeForSign = x._gradeForSign;
 		_gradeForExecute = x._gradeForExecute;
 	}
 	return (*this);		
@@ -39,9 +39,9 @@ bool const& Form::getBeSigned(void) const
 	return (_signed);
 }
 
-unsigned int const& Form::getGrade(void) const
+unsigned int const& Form::getGradeForSign(void) const
 {
-	return (_grade);
+	return (_gradeForSign);
 }
 
 unsigned int const& Form::getGradeForExecute(void) const
@@ -49,30 +49,26 @@ unsigned int const& Form::getGradeForExecute(void) const
 	return (_gradeForExecute);
 }
 
-void Form::besigned(Bureaucrat obj)
+void Form::beSigned(Bureaucrat const& b)
 {
-	if (obj.getGrade() <= _gradeForExecute)
+	if (b.getGrade() <= _gradeForSign)
 		_signed = true;
 	else
-		throw GradeTooLowException();
-
-}
-
-const char* Form::GradeTooHighException::what() const throw()
-{
-	return ("Grade is too high!");
+		throw Form::GradeTooLowException();
 }
 
 const char* Form::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low!");
+	return ("[Form]Grade is too low!");
 }
 
 std::ostream& operator<<(std::ostream& os, Form const& b)
 {
-	os << b.getName() << std::endl;
-	os << b.getBeSigned() << std::endl;
-	os << b.getGrade() << std::endl;
-	os << b.getGradeForExecute() << std::endl;
+	os << ">>>" << std::endl;
+	os << "These are " << b.getName() << " information." << std::endl;
+	os << "Signed status : " << b.getBeSigned() << std::endl;
+	os << "Required grade for sign : " << b.getGradeForSign() << std::endl;
+	os << "Required grade for execute : " << b.getGradeForExecute() << std::endl;
+	os << "<<<";
 	return os;
 }
