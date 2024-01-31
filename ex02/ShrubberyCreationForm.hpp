@@ -9,7 +9,7 @@
 
 #include "AForm.hpp"
 
-class ShrubberyCreationForm : AForm
+class ShrubberyCreationForm : public AForm
 {
 	public:
 		ShrubberyCreationForm(std::string);
@@ -23,3 +23,5 @@ class ShrubberyCreationForm : AForm
 		std::string _target;
 
 };
+
+std::ostream & operator<<(std::ostream &, ShrubberyCreationForm const&);

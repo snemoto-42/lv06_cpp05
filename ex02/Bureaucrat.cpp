@@ -155,4 +155,8 @@ void Bureaucrat::executeForm(AForm const& f)
 	{
 		std::cout  << _name << " couldn't execute " << f.getName() << " because " << e.what() << "." << std::endl;
 	}
+	catch (AForm::NoSignedException const& e)
+	{
+		std::cout  << _name << " couldn't execute " << f.getName() << " because " << e.what() << "." << std::endl;
+	}
 }

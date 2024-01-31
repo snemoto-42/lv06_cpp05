@@ -24,11 +24,21 @@ class AForm
 		unsigned int const& getGradeForSign(void) const;
 		unsigned int const& getGradeForExecute(void) const;
 
+		void setName(std::string const&);
+		void setBeSigned(void);
+		void setGradeForSign(unsigned int);
+		void setGradeForExecute(unsigned int);
+
 		void beSigned(Bureaucrat const&);
 		void execute(Bureaucrat const&) const;
 		virtual void createForm() const = 0;
 
 		class GradeTooLowException : public std::exception
+		{
+			public :
+				const char* what() const throw();
+		};
+		class NoSignedException : public std::exception
 		{
 			public :
 				const char* what() const throw();
@@ -42,4 +52,4 @@ class AForm
 		
 };
 
-std::ostream & operator<<(std::ostream &, AForm const&);
+// std::ostream & operator<<(std::ostream &, AForm const&);

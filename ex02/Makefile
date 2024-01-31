@@ -29,6 +29,7 @@ $(NAME): $(OBJS)
 
 clean:
 		${RMD} $(OBJDIR)
+		${RM} *_shrubbery
 
 fclean:	clean
 		${RM} ${NAME}

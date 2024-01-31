@@ -1,8 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 {
-	std::cout << GREEN << "ShrubberyCreationForm :  Constructor called" << RESET << std::endl;
+	std::cout << GREEN << "ShrubberyCreationForm : Default constructor called" << RESET << std::endl;
+	setName("ShrubberyCreationForm");
+	setGradeForSign(145);
+	setGradeForExecute(137);
+	_target = target;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -46,4 +50,15 @@ void ShrubberyCreationForm::createForm() const
 	{
 		std::cerr << "Unable to open " << fileName << std::endl;
 	}
+}
+
+std::ostream& operator<<(std::ostream& os, ShrubberyCreationForm const& b)
+{
+	os << ">>>" << std::endl;
+	os << "These are " << b.getName() << " information." << std::endl;
+	os << "Signed status : " << b.getBeSigned() << std::endl;
+	os << "Required grade for sign : " << b.getGradeForSign() << std::endl;
+	os << "Required grade for execute : " << b.getGradeForExecute() << std::endl;
+	os << "<<<";
+	return os;
 }
