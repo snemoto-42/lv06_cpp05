@@ -11,7 +11,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << GREEN << "ShrubberyCreationForm : Destructor called" << RESET << std::endl;	
+	std::cout << GREEN << "RobotomyRequestForm : Destructor called" << RESET << std::endl;	
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& x)
