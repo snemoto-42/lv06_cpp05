@@ -56,7 +56,7 @@ unsigned int const& AForm::getGradeForExecute(void) const
 
 void AForm::setName(std::string const& name){_name = name;}
 
-void AForm::setBeSigned(void){_signed = true;}
+void AForm::setBeSigned(bool b){_signed = b;}
 
 void AForm::setGradeForSign(unsigned int unum){_gradeForSign = unum;}
 
@@ -65,7 +65,7 @@ void AForm::setGradeForExecute(unsigned int unum){_gradeForExecute = unum;}
 void AForm::beSigned(Bureaucrat const& b)
 {
 	if (b.getGrade() <= _gradeForSign)
-		setBeSigned();
+		setBeSigned(true);
 	else
 		throw AForm::GradeTooLowException();
 }

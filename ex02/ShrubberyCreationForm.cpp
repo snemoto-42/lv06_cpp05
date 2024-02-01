@@ -4,6 +4,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 {
 	std::cout << GREEN << "ShrubberyCreationForm : Default constructor called" << RESET << std::endl;
 	setName("ShrubberyCreationForm");
+	setBeSigned(false);
 	setGradeForSign(145);
 	setGradeForExecute(137);
 	_target = target;
@@ -45,6 +46,7 @@ void ShrubberyCreationForm::createForm() const
         outputFile << " 77U 78 7P 8 O8P 8 7b" << std::endl;
 
 		outputFile.close();
+		std::cout << fileName << " is created successfully!" << std::endl;
 	}
 	else
 	{

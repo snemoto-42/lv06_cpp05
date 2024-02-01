@@ -25,7 +25,7 @@ class AForm
 		unsigned int const& getGradeForExecute(void) const;
 
 		void setName(std::string const&);
-		void setBeSigned(void);
+		void setBeSigned(bool);
 		void setGradeForSign(unsigned int);
 		void setGradeForExecute(unsigned int);
 

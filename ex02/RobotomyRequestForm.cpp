@@ -4,6 +4,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
 {
 	std::cout << GREEN << "RobotomyRequestForm : Default constructor called" << RESET << std::endl;
 	setName("RobotomyRequestForm");
+	setBeSigned(false);
 	setGradeForSign(72);
 	setGradeForExecute(45);
 	_target = target;
@@ -32,6 +33,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const& x
 
 void RobotomyRequestForm::createForm() const
 {
+	std::cout << "Vrrrrrrrrrrrrrrrrrrr!!!" << std::endl;
 	std::time_t currentTime = std::time(NULL);
 	std::srand(static_cast<unsigned int>(currentTime));
 	unsigned int rnum = std::rand();

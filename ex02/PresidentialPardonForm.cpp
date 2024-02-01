@@ -4,6 +4,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target)
 {
 	std::cout << GREEN << "PresidentialPardonForm : Default constructor called" << RESET << std::endl;
 	setName("PresidentialPardonForm");
+	setBeSigned(false);
 	setGradeForSign(25);
 	setGradeForExecute(5);
 	_target = target;
