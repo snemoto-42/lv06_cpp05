@@ -3,103 +3,199 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "AForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-	std::cout << "\n<<< ex02 >>>" << std::endl;
+	std::cout << "\n<<< ex03 >>>" << std::endl;
 	std::cout << "\n<<< ShrubberyCreationForm >>>" << std::endl;
 	{
-		std::cout << "\n--- sign & execute ---" << std::endl;
+		std::cout << "\n--- Intern makes the form successfully ---" << std::endl;
 		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		ShrubberyCreationForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("ShrubberyCreationForm", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
 	{
-		std::cout << "\n--- only sign ---" << std::endl;
-		Bureaucrat b("snemoto", 140);
+		std::cout << "\n--- Intern makes the form unsuccessfully ---" << std::endl;
+		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		ShrubberyCreationForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
-	}
-	{
-		std::cout << "\n--- notihing ---" << std::endl;
-		Bureaucrat b("snemoto", 150);
-		std::cout << b << std::endl;
-		ShrubberyCreationForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("ShrubberyCreation", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
 	std::cout << "\n<<< RobotomyRequestForm >>>" << std::endl;
 	{
-		std::cout << "\n--- sign & execute ---" << std::endl;
+		std::cout << "\n--- Intern makes the form successfully ---" << std::endl;
 		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		RobotomyRequestForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("RobotomyRequestForm", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
 	{
-		std::cout << "\n--- only sign ---" << std::endl;
-		Bureaucrat b("snemoto", 70);
+		std::cout << "\n--- Intern makes the form unsuccessfully ---" << std::endl;
+		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		RobotomyRequestForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
-	}
-	{
-		std::cout << "\n--- notihing ---" << std::endl;
-		Bureaucrat b("snemoto", 80);
-		std::cout << b << std::endl;
-		RobotomyRequestForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("RobotomyRequest", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
 	std::cout << "\n<<< PresidentialPardonForm >>>" << std::endl;
 	{
-		std::cout << "\n--- sign & execute ---" << std::endl;
+		std::cout << "\n--- Intern makes the form successfully ---" << std::endl;
 		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		PresidentialPardonForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("PresidentialPardonForm", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
 	{
-		std::cout << "\n--- only sign ---" << std::endl;
-		Bureaucrat b("snemoto", 20);
+		std::cout << "\n--- Intern makes the form unsuccessfully ---" << std::endl;
+		Bureaucrat b("snemoto", 1);
 		std::cout << b << std::endl;
-		PresidentialPardonForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
+		Intern i;
+		AForm * f = i.makeForm("PresidentialPardon", "TEST");
+		if (f)
+		{
+			std::cout << *f << std::endl;
+			b.signForm(*f);
+			b.executeForm(*f);
+			std::cout << *f << std::endl;
+			delete f;
+		}
 	}
-	{
-		std::cout << "\n--- notihing ---" << std::endl;
-		Bureaucrat b("snemoto", 30);
-		std::cout << b << std::endl;
-		PresidentialPardonForm f("TEST");
-		std::cout << f << std::endl;
-		b.signForm(f);
-		b.executeForm(f);
-		std::cout << f << std::endl;
-	}
+	// std::cout << "\n<<< ex02 >>>" << std::endl;
+	// std::cout << "\n<<< ShrubberyCreationForm >>>" << std::endl;
+	// {
+	// 	std::cout << "\n--- sign & execute ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 1);
+	// 	std::cout << b << std::endl;
+	// 	ShrubberyCreationForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- only sign ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 140);
+	// 	std::cout << b << std::endl;
+	// 	ShrubberyCreationForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- notihing ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 150);
+	// 	std::cout << b << std::endl;
+	// 	ShrubberyCreationForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// std::cout << "\n<<< RobotomyRequestForm >>>" << std::endl;
+	// {
+	// 	std::cout << "\n--- sign & execute ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 1);
+	// 	std::cout << b << std::endl;
+	// 	RobotomyRequestForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- only sign ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 70);
+	// 	std::cout << b << std::endl;
+	// 	RobotomyRequestForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- notihing ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 80);
+	// 	std::cout << b << std::endl;
+	// 	RobotomyRequestForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// std::cout << "\n<<< PresidentialPardonForm >>>" << std::endl;
+	// {
+	// 	std::cout << "\n--- sign & execute ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 1);
+	// 	std::cout << b << std::endl;
+	// 	PresidentialPardonForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- only sign ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 20);
+	// 	std::cout << b << std::endl;
+	// 	PresidentialPardonForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
+	// {
+	// 	std::cout << "\n--- notihing ---" << std::endl;
+	// 	Bureaucrat b("snemoto", 30);
+	// 	std::cout << b << std::endl;
+	// 	PresidentialPardonForm f("TEST");
+	// 	std::cout << f << std::endl;
+	// 	b.signForm(f);
+	// 	b.executeForm(f);
+	// 	std::cout << f << std::endl;
+	// }
 	// std::cout << "\n<<< ex01 >>>" << std::endl;
 	// {
 	// 	std::cout << "\n--- signed test ---" << std::endl;

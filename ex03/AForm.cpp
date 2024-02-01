@@ -90,13 +90,13 @@ const char* AForm::NoSignedException::what() const throw()
 	return ("The form is not signed yet!");
 }
 
-// std::ostream& operator<<(std::ostream& os, AForm const& b)
-// {
-// 	os << ">>>" << std::endl;
-// 	os << "These are " << b.getName() << " information." << std::endl;
-// 	os << "Signed status : " << b.getBeSigned() << std::endl;
-// 	os << "Required grade for sign : " << b.getGradeForSign() << std::endl;
-// 	os << "Required grade for execute : " << b.getGradeForExecute() << std::endl;
-// 	os << "<<<";
-// 	return os;
-// }
+std::ostream& operator<<(std::ostream& os, AForm const& b)
+{
+	os << ">>>" << std::endl;
+	os << "These are " << b.getName() << " information." << std::endl;
+	os << "Signed status : " << b.getBeSigned() << std::endl;
+	os << "Required grade for sign : " << b.getGradeForSign() << std::endl;
+	os << "Required grade for execute : " << b.getGradeForExecute() << std::endl;
+	os << "<<<";
+	return os;
+}

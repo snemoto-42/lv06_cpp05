@@ -52,4 +52,4 @@ class AForm
 		
 };
 
-// std::ostream & operator<<(std::ostream &, AForm const&);
+std::ostream & operator<<(std::ostream &, AForm const&);
